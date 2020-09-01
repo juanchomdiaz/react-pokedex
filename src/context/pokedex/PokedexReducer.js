@@ -11,7 +11,6 @@ export default (state, action) => {
         case LIST_FETCH_SUCCESS:
             return {
                 ...state,
-                loading: false,
                 count: action.payload.count,
                 next: action.payload.next,
                 previous: action.payload.previous,
@@ -19,7 +18,8 @@ export default (state, action) => {
         case DETAILS_FETCH_SUCCESS:
             return {
                 ...state,
-                pokemons: action.payload
+                pokemons: action.payload,
+                loading: false
             }
         default:
             return state;
