@@ -13,8 +13,8 @@ const PokedexState = (props) => {
   const initialState = {
     loading: false,
     count: 0,
-    next: "",
-    previous: "",
+    next: "/pokemon?limit=5",
+    previous: null,
     pokemons: [],
     limit: 5,
     currentPokemon: {},
@@ -23,15 +23,24 @@ const PokedexState = (props) => {
   const [state, dispatch] = useReducer(PokedexReducer, initialState);
 
   //functions
-  const fetchPokemons = () => {
+  const fetchNext = () => {
+    fetchPokemons(state.next);
+  }
+
+  const fetchPrevious = () => {
+    fetchPokemons(state.previous);
+  }
+
+  const fetchPokemons = (url) => {
     try {
         dispatch({
             type: LIST_FETCH_REQUEST,
         });
 
         pokeapi
-        .get(`/pokemon?limit=${state.limit}`)
+        .get(url)
         .then((res) => {
+
             dispatch({
                 type: LIST_FETCH_SUCCESS,
                 payload: res.data,
@@ -60,7 +69,10 @@ const PokedexState = (props) => {
       value={{
         loading: state.loading,
         pokemons: state.pokemons,
-        fetchPokemons: fetchPokemons,
+        hasPrevious: state.previous !== null,
+        hasNext: state.next !== null,
+        fetchNext: fetchNext,
+        fetchPrevious: fetchPrevious,
       }}
     >
       {props.children}

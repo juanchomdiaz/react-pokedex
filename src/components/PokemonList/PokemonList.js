@@ -6,10 +6,10 @@ import "./PokemonList.scss";
 const PokemonList = () => {
 
     const pokedexContext = useContext(PokedexContext);
-    const {loading, pokemons, fetchPokemons} = pokedexContext;
+    const {pokemons, fetchNext} = pokedexContext;
 
     useEffect(() => {
-        fetchPokemons();
+        fetchNext();
     },[]);
 
     return ( 
