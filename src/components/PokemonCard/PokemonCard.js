@@ -6,20 +6,21 @@ import PokedexContext from "../../context/pokedex/PokedexContext";
 
 const PokemonCard = ({ pokemon }) => {
   const pokedexContext = useContext(PokedexContext);
-  const { loading } = pokedexContext;
+  const { isLoading  } = pokedexContext;
+  
 
   return (
-    <Card className="mb-4">
-      {loading ? 
+    <Card className="mb-4 text-center">
+      {isLoading  ? 
         <Skeleton circle={true} height={150} width={150} /> 
       :  
-      <Card.Img
-        variant="top"
-        src={pokemon.sprites.other.dream_world.front_default}
-      />
+        <Card.Img
+          variant="top"
+          src={pokemon.sprites.other.dream_world.front_default}
+        />
       }
       <Card.Body>
-        {loading ? <Skeleton /> : <Card.Text>pokemon.name</Card.Text>}
+        {isLoading  ? <Skeleton /> : <Card.Text className="text-capitalize">{pokemon.name}</Card.Text>}
       </Card.Body>
     </Card>
   );

@@ -67,7 +67,7 @@ const PokedexState = (props) => {
   return (
     <PokedexContext.Provider
       value={{
-        loading: state.loading,
+        isLoading: state.loading,
         pokemons: state.pokemons,
         hasPrevious: state.previous !== null,
         hasNext: state.next !== null,

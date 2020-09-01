@@ -13,13 +13,13 @@ export default (state, action) => {
                 ...state,
                 count: action.payload.count,
                 next: action.payload.next,
-                previous: action.payload.previous,
+                previous: action.payload.previous
             }
         case DETAILS_FETCH_SUCCESS:
             return {
                 ...state,
                 pokemons: action.payload,
-                loading: false
+                loading: false           
             }
         default:
             return state;

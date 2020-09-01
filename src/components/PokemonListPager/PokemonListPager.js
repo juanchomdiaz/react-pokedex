@@ -4,7 +4,7 @@ import { Button, Row, Col } from "react-bootstrap";
 
 const PokemonListPager = () => {
   const pokedexContext = useContext(PokedexContext);
-  const { loading, hasPrevious, hasNext, fetchPrevious, fetchNext } = pokedexContext;
+  const { isLoading, hasPrevious, hasNext, fetchPrevious, fetchNext } = pokedexContext;
 
   const handlePreviousClick = () => {
     fetchPrevious();
@@ -15,22 +15,22 @@ const PokemonListPager = () => {
   }
 
   return (
-    !loading && (
-      <Row className="justify-content-md-center">
-        <Col>
+    !isLoading && (
+      <Row className="mb-4">
+
+        <Col lg={{ span: 10, offset: 1 }} md={12}>
           <Button
             variant="dark"
-            className="pull-left"
+            className="float-left"
             disabled={!hasPrevious}
             onClick={handlePreviousClick}
           >
             Previous
           </Button>
-        </Col>
-        <Col>
+
           <Button
             variant="dark"
-            className="pull-right"
+            className="float-right"
             disabled={!hasNext}
             onClick={handleNextClick}
           >
