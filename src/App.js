@@ -11,7 +11,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/pokedex" component={PokedexMain} />
-          <Route exact path="/pokemon/:number" component={PokemonDetails} />
+          <Route exact path="/pokemon/:name" component={PokemonDetails} />
           <Redirect from="/" to="/pokedex"/>
           <Route path="*">
             <PageNotFound />
