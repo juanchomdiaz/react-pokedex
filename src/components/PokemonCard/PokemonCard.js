@@ -5,11 +5,10 @@ import "./PokemonCard.scss";
 const PokemonCard = ({ pokemon }) => {
   return (
     <Card className="mb-4">
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={pokemon.sprites.other.dream_world.front_default} />
       <Card.Body>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {pokemon.name}
         </Card.Text>
       </Card.Body>
     </Card>

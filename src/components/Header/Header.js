@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
@@ -9,7 +9,7 @@ const Header = () => {
       <Link to="/pokedex">
         <Navbar.Brand>
           <img alt="" src="/logo.svg" width="40" height="40" className="logo" />{" "}
-          <div class="brand-name">Pokedex</div>
+          <div className="brand-name">Pokedex</div>
         </Navbar.Brand>
       </Link>
     </Navbar>

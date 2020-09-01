@@ -6,7 +6,7 @@ import "./PokemonList.scss";
 const PokemonList = () => {
 
     const pokedexContext = useContext(PokedexContext);
-    const {pokemons, fetchPokemons} = pokedexContext;
+    const {loading, pokemons, fetchPokemons} = pokedexContext;
 
     useEffect(() => {
         fetchPokemons();
@@ -16,6 +16,7 @@ const PokemonList = () => {
         <div className="card-grid">
             {pokemons.map(pokemon => (
                 <PokemonCard
+                    key={pokemon.id}
                     pokemon={pokemon}
                 />
             ))}
