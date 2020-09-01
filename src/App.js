@@ -1,38 +1,25 @@
-import React, { useState } from 'react';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import PokemonState from "./context/pokedex/PokedexState";
+import PokedexMain from "./components/PokedexMain";
+import PokemonDetails from "./components/PokemonDetails";
+import PageNotFound from "./components/PageNotFound";
 
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Toast from 'react-bootstrap/Toast';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-
-const ExampleToast = ({ children }) => {
-  const [show, toggleShow] = useState(true);
-
+const App = () => {
   return (
-    <>
-      {!show && <Button onClick={() => toggleShow(true)}>Show Toast</Button>}
-      <Toast show={show} onClose={() => toggleShow(false)}>
-        <Toast.Header>
-          <strong className="mr-auto">React-Bootstrap</strong>
-        </Toast.Header>
-        <Toast.Body>{children}</Toast.Body>
-      </Toast>
-    </>
+    <PokemonState>
+      <Router>
+        <Switch>
+          <Route exact path="/pokedex" component={PokedexMain} />
+          <Route exact path="/pokemon/:number" component={PokemonDetails} />
+          <Redirect from="/" to="/pokedex"/>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </PokemonState>
   );
 };
-
-const App = () => (
-  <Container className="p-3">
-    <Jumbotron>
-      <h1 className="header">Welcome To React-Bootstrap</h1>
-      <ExampleToast>
-        We now have Toasts
-        <span role="img" aria-label="tada">
-          🎉
-        </span>
-      </ExampleToast>
-    </Jumbotron>
-  </Container>
-);
 
 export default App;
