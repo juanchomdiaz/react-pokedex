@@ -9,10 +9,12 @@ const PokedexMain = () => {
     <Fragment>
       <Header />
 
-      <Container fluid>
+      <Container fluid className="mt-5">
         <Row>
-          <PokemonList />
-          <PokemonListPager />
+          <Col>
+            <PokemonList />
+            <PokemonListPager />
+          </Col>
         </Row>
       </Container>
     </Fragment>

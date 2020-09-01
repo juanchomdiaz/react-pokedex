@@ -1,3 +1,11 @@
 .navbar-brand {
-    vertical-align: middle;
+
+    .logo {
+        display: inline-flex;
+    }
+
+    .brand-name {
+        display: inline-flex;
+        vertical-align: middle;
+    }
 }
