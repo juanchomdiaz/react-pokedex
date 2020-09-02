@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import PokedexContext from "./PokedexContext";
 import PokedexReducer from "./PokedexReducer";
 import pokeapi from "../../config/axios";
+
 import {
   LOAD_POKEMONS_START,
   LOAD_POKEMONS_READY,
@@ -12,6 +13,7 @@ import {
   LOAD_POKEMON_DETAILS_START,
   LOAD_POKEMON_DETAILS_READY,
   LOAD_POKEMON_DETAILS_ERROR,
+  GO_BACK_BUTTON_PRESSED
 } from "../../types";
 
 const PokedexState = (props) => {
@@ -20,7 +22,8 @@ const PokedexState = (props) => {
     error: null,
     isReady: false,
     showingPokemonDetails: false,
-    showingPokemonList: true,
+    showingPokedex: true,
+    preventReload: false,
     count: 0,
     next: "/pokemon?limit=5",
     previous: null,
@@ -33,7 +36,8 @@ const PokedexState = (props) => {
 
   //functions
   const fetchNext = () => {
-    if (state.showingPokemonList) fetchPokemons(state.next);
+    if (!state.preventReload) fetchPokemons(state.next);
+    state.preventReload = !state.preventReload;
   };
 
   const fetchPrevious = () => {
@@ -99,6 +103,14 @@ const PokedexState = (props) => {
     });
   };
 
+  const goBackToPokedex = (history) => {
+    dispatch({
+      type: GO_BACK_BUTTON_PRESSED,
+    });
+
+    history.goBack();
+  }
+
   return (
     <PokedexContext.Provider
       value={{
@@ -110,6 +122,7 @@ const PokedexState = (props) => {
         fetchNext: fetchNext,
         fetchPrevious: fetchPrevious,
         fetchPokemonDetails: fetchPokemonDetails,
+        goBackToPokedex: goBackToPokedex
       }}
     >
       {props.children}

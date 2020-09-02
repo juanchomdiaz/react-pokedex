@@ -8,6 +8,7 @@ import {
   LOAD_POKEMON_DETAILS_START,
   LOAD_POKEMON_DETAILS_READY,
   LOAD_POKEMON_DETAILS_ERROR,
+  GO_BACK_BUTTON_PRESSED
 } from "../../types";
 
 export default (state, action) => {
@@ -73,6 +74,11 @@ export default (state, action) => {
         error: action.payload,
         withError: true,
       };
+    case GO_BACK_BUTTON_PRESSED:
+        return {
+            ...state,
+            preventReload: true
+        }
     default:
       return state;
   }

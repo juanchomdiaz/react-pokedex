@@ -5,14 +5,14 @@ import { Button } from "react-bootstrap";
 
 const PokemonDetails = ({ history, match }) => {
   const pokedexContext = useContext(PokedexContext);
-  const { fetchPokemonDetails } = pokedexContext;
+  const { fetchPokemonDetails, goBackToPokedex } = pokedexContext;
 
   useEffect(() => {
     fetchPokemonDetails(match.params.name);
   }, []);
 
   const goBack = () => {
-    history.goBack();
+    goBackToPokedex(history);
   }
 
   return (
