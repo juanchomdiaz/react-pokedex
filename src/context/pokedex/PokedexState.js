@@ -5,7 +5,8 @@ import pokeapi from "../../config/axios";
 import { 
         LIST_FETCH_REQUEST, 
         LIST_FETCH_SUCCESS, 
-        DETAILS_FETCH_SUCCESS 
+        DETAILS_FETCH_SUCCESS,
+        CHANGE_CURRENT_POKEMON
        } 
 from '../../types';
 
@@ -65,6 +66,14 @@ const PokedexState = (props) => {
     }
   };
 
+  const viewPokemonDetails = (id) => {
+      const pokemon = state.pokemons.filter(pok => pok.id===id);
+      dispatch({
+        type: CHANGE_CURRENT_POKEMON,
+        payload: pokemon,
+    });
+  }
+
   return (
     <PokedexContext.Provider
       value={{
@@ -75,6 +84,7 @@ const PokedexState = (props) => {
         hasNext: state.next !== null,
         fetchNext: fetchNext,
         fetchPrevious: fetchPrevious,
+        viewPokemonDetails: viewPokemonDetails
       }}
     >
       {props.children}

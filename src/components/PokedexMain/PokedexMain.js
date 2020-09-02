@@ -1,15 +1,11 @@
 import React, { Fragment } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Header from "../Header";
+import { Row, Col } from "react-bootstrap";
 import PokemonList from "../PokemonList";
 import PokemonListPager from "../PokemonListPager";
 
 const PokedexMain = () => {
   return (
     <Fragment>
-      <Header />
-
-      <Container fluid className="mt-5">
         <Row>
           <Col>
             <PokemonList />
@@ -20,7 +16,6 @@ const PokedexMain = () => {
             <PokemonListPager />
           </Col>
         </Row>
-      </Container>
     </Fragment>
   );
 };
