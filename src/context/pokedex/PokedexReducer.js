@@ -6,20 +6,22 @@ export default (state, action) => {
         case LIST_FETCH_REQUEST:
             return {
                 ...state,
-                loading: true
+                isFetchingList: true,
+                isFullyLoaded: false
             }
         case LIST_FETCH_SUCCESS:
             return {
                 ...state,
                 count: action.payload.count,
                 next: action.payload.next,
-                previous: action.payload.previous
+                previous: action.payload.previous,
+                isFetchingList: false 
             }
         case DETAILS_FETCH_SUCCESS:
             return {
                 ...state,
                 pokemons: action.payload,
-                loading: false           
+                isFullyLoaded: true
             }
         default:
             return state;

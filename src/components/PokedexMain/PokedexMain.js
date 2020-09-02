@@ -13,6 +13,10 @@ const PokedexMain = () => {
         <Row>
           <Col>
             <PokemonList />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <PokemonListPager />
           </Col>
         </Row>

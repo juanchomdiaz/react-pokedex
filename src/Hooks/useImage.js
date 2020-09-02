@@ -3,24 +3,30 @@ import imageLoader from '../utils/imageLoader';
 
 const useImage = ({src}) => {
     const [loaded, setLoaded] = useState(false);
+    const [image, setImage] = useState({});
 
     useEffect(() => {
-        if (!src || loaded) return;
+        if (!src) return;
 
         const loadImage = async (src) => {
             return await imageLoader(src);
         } 
 
         try {
-            const image = loadImage(src);
-            setLoaded(true)
+            loadImage(src).then(
+                image => {
+                    setImage(image);
+                    setLoaded(true)
+                }
+            );
         } catch (error) {
 
         }
     }, [src]);
 
     return {
-        isImageLoaded: loaded
+        image: image,
+        isLoaded: loaded
     }
 };
 

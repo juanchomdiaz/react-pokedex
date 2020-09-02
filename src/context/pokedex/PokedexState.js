@@ -11,7 +11,8 @@ from '../../types';
 
 const PokedexState = (props) => {
   const initialState = {
-    loading: false,
+    isFetchingList: false,
+    isFullyLoaded: false,
     count: 0,
     next: "/pokemon?limit=5",
     previous: null,
@@ -67,7 +68,8 @@ const PokedexState = (props) => {
   return (
     <PokedexContext.Provider
       value={{
-        isLoading: state.loading,
+        isLoading: state.pokemons.length===0,
+        isFullyLoaded: state.isFullyLoaded,
         pokemons: state.pokemons,
         hasPrevious: state.previous !== null,
         hasNext: state.next !== null,
