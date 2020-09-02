@@ -2,16 +2,18 @@ import React from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Header.scss";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 
 const Header = () => {
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg="light" variant="light" className="justify-content-between">
       <Link to="/pokedex">
         <Navbar.Brand>
           <img alt="" src="/logo.svg" width="40" height="40" className="logo" />{" "}
           <div className="brand-name">Pokedex</div>
         </Navbar.Brand>
       </Link>
+      <LanguageSelector />
     </Navbar>
   );
 };

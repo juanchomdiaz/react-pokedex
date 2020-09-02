@@ -7,9 +7,11 @@ import translations from "./translations";
 i18n
 .use(LanguageDetector)
 .use(initReactI18next).init({
-  fallbackLng: "en",
-  translations,
+  fallbackLng: ["en","es","fr","de","it"],
+  resources: translations,
   lng: "en",
+  //debug: true,
+
 
   keySeparator: false,
 
