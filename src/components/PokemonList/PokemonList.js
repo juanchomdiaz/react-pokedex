@@ -6,7 +6,7 @@ import { Spinner } from "react-bootstrap";
 
 const PokemonList = () => {
   const pokedexContext = useContext(PokedexContext);
-  const { isLoading, pokemons, fetchNext } = pokedexContext;
+  const { pokemons, fetchNext } = pokedexContext;
 
   useEffect(() => {
     fetchNext();
@@ -14,7 +14,7 @@ const PokemonList = () => {
 
   return (
     <Fragment>
-      {!isLoading ? (
+      {pokemons.lenght!==0 ? (
         <div className="card-grid">
           {pokemons.map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemon={pokemon} />

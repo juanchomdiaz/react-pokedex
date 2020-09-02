@@ -1,21 +1,18 @@
 import React, { useContext, Fragment } from "react";
 import PokedexContext from "../../context/pokedex/PokedexContext";
 import { Button, Row, Col } from "react-bootstrap";
+import { scrollToTop } from "../../utils/helpers";
 
 const PokemonListPager = () => {
   const pokedexContext = useContext(PokedexContext);
   const {
-    isLoading,
-    isFullyLoaded,
+    isReady,
     hasPrevious,
     hasNext,
     fetchPrevious,
     fetchNext,
   } = pokedexContext;
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handlePreviousClick = () => {
     fetchPrevious();
@@ -29,13 +26,13 @@ const PokemonListPager = () => {
 
   return (
     <Fragment>
-      {!isLoading && 
+      {isReady && 
         <Row className="mb-4">
           <Col lg={{ span: 10, offset: 1 }} md={12}>
             <Button
               variant="dark"
               className="float-left"
-              disabled={!isFullyLoaded || !hasPrevious}
+              disabled={!hasPrevious}
               onClick={handlePreviousClick}
             >
               Previous
@@ -44,7 +41,7 @@ const PokemonListPager = () => {
             <Button
               variant="dark"
               className="float-right"
-              disabled={!isFullyLoaded || !hasNext}
+              disabled={!hasNext}
               onClick={handleNextClick}
             >
               Next

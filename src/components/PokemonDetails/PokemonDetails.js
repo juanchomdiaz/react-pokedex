@@ -1,14 +1,26 @@
-import React, { Fragment } from 'react';
-import { Button } from 'react-bootstrap';
+import React, { Fragment, useContext, useEffect } from "react";
+import PokedexContext from "../../context/pokedex/PokedexContext";
 
-const PokemonDetails = ({history, match}) => {
-    return ( 
-        <Fragment>
-        <h1>{match.params.name}</h1> 
-        <Button onClick={() => history.goBack()}>Go back</Button>
-        </Fragment>
+import { Button } from "react-bootstrap";
 
-    );
-}
- 
+const PokemonDetails = ({ history, match }) => {
+  const pokedexContext = useContext(PokedexContext);
+  const { fetchPokemonDetails } = pokedexContext;
+
+  useEffect(() => {
+    fetchPokemonDetails(match.params.name);
+  }, []);
+
+  const goBack = () => {
+    history.goBack();
+  }
+
+  return (
+    <Fragment>
+      <h1>{match.params.name}</h1>
+      <Button onClick={() => goBack()}>Go back</Button>
+    </Fragment>
+  );
+};
+
 export default PokemonDetails;

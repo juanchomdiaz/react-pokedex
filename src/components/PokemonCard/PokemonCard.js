@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
 
 const PokemonCard = ({ pokemon }) => {
   const pokedexContext = useContext(PokedexContext);
-  const { isFullyLoaded, viewPokemonDetails } = pokedexContext;
+  const { isReady } = pokedexContext;
   const imageSrc = pokemon.sprites.other.dream_world.front_default;
   const { image, isLoaded } = useImage({ src: imageSrc });
 
   return (
-    <Link to={`/pokedex/pokemon/${pokemon.name}`} >
+    <Link to={`/pokedex/${pokemon.name}`}>
       <Card className="mb-4 shadow p-3 mb-5 bg-white rounded">
         <div className="card-img__wrapper">
           <div className="card-img__inner">
-            {!(isFullyLoaded && isLoaded) ? (
+            {!(isReady && isLoaded) ? (
               <Skeleton circle={true} height={150} width={150} />
             ) : (
               <Fade timeour={500} appear={true} in={true}>
@@ -31,7 +31,7 @@ const PokemonCard = ({ pokemon }) => {
           </div>
         </div>
         <div className="card-name__wrapper">
-          {!(isFullyLoaded && isLoaded) ? (
+          {!(isReady && isLoaded) ? (
             <Skeleton />
           ) : (
             <Fade in={isLoaded}>
