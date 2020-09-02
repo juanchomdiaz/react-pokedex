@@ -3,24 +3,19 @@ import { Row, Col, Alert } from "react-bootstrap";
 import PokemonList from "../PokemonList";
 import PokemonListPager from "../PokemonListPager";
 import PokedexContext from "../../context/pokedex/PokedexContext";
+import { useTranslation } from "react-i18next";
 
 const PokedexMain = () => {
   const pokedexContext = useContext(PokedexContext);
   const { withError } = pokedexContext;
+  const { t } = useTranslation();
 
-  const doRefreshPage = () => {
-    window.location.reload(false);
-  }
  
   return (
     <Fragment>
       {withError ? (
         <Alert variant="danger">
-          An error has occured. Please{" "}
-          <Alert.Link href="!#" onClick={() => doRefreshPage()}>
-            refresh
-          </Alert.Link>{" "}
-          this page.
+          {t("generic_error")}
         </Alert>
       ) : (
         <Fragment>

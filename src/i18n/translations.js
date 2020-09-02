@@ -9,6 +9,7 @@ const translations = {
       en: "English",
       it: "Italian",
       fr: "French",
+      generic_error: "Ooops! An error has occured. Please, reload this page."
     },
   },
   es: {
@@ -21,6 +22,7 @@ const translations = {
       en: "Inglés",
       it: "Italiano",
       fr: "Francés",
+      generic_error: "Ooops! Ha ocurrido un error. Por favor, recarga la página."
     },
   },
   fr: {
@@ -33,6 +35,7 @@ const translations = {
       en: "Anglais",
       it: "italien",
       fr: "Français",
+      generic_error: "Oups! Une erreur s'est produite. Veuillez recharger la page."
     },
   },
   de: {
@@ -43,8 +46,9 @@ const translations = {
       es: "Spanisch",
       de: "Deutsch",
       en: "Englisch",
-      es: "Italienisch",
+      it: "Italienisch",
       fr: "Französisch",
+      generic_error: "Ups! Ein Fehler ist aufgetreten. Bitte laden Sie die Seite neu."
     },
   },
   it: {
@@ -57,6 +61,7 @@ const translations = {
       en: "Inglese",
       it: "italiano",
       fr: "Francese",
+      generic_error: "Spiacenti! Si è verificato un errore. Per favor, ricarica la pagina."
     },
   },
 };

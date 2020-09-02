@@ -5,7 +5,7 @@ import { scrollToTop } from "../../utils/helpers";
 import { useTranslation } from "react-i18next";
 
 const PokemonListPager = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const pokedexContext = useContext(PokedexContext);
   const {
