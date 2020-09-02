@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,11 +15,13 @@ const App = () => {
     <PokedexState>
       <Router>
         <AppLayout>
-          <Redirect from="/" to="/pokedex" />
-          <Switch>
-            <Route exact path="/pokedex" component={PokedexMain} />
-            <Route exact path="/pokedex/:name" component={PokemonDetails} />
-          </Switch>
+          <Suspense fallback="loading">
+            <Redirect from="/" to="/pokedex" />
+            <Switch>
+              <Route exact path="/pokedex" component={PokedexMain} />
+              <Route exact path="/pokedex/:name" component={PokemonDetails} />
+            </Switch>
+          </Suspense>
         </AppLayout>
       </Router>
     </PokedexState>
