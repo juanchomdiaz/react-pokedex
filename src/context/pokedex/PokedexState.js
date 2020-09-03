@@ -23,14 +23,12 @@ const PokedexState = (props) => {
     withError: false,
     error: null,
     isReady: false,
-    showingPokemonDetails: false,
-    showingPokedex: true,
     count: 0,
     nextUrl: "/pokemon?limit=5",
     previousUrl: null,
     currentUrl: "/pokemon?limit=5",
     pokemons: [],
-    currentPokemon: {},
+    currentPokemon: null,
   };
 
   const [state, dispatch] = useReducer(PokedexReducer, initialState);
@@ -120,7 +118,7 @@ const PokedexState = (props) => {
       type: LOAD_POKEMON_DETAILS_START,
     });
 
-    const [pokemon] = state.pokemons.filter((pok) => pok.name === name);
+    let [pokemon] = state.pokemons.filter((pok) => pok.name === name);
 
     if (!pokemon) {
       dispatch({
@@ -132,11 +130,12 @@ const PokedexState = (props) => {
           type: LOAD_SINGLE_POKEMON_READY
         });
 
-        let pokemon = res.data;
+        pokemon = res.data;
         loadPokemonAbilities(pokemon);
       }).catch((error) => {
         dispatch({
-          type: LOAD_SINGLE_POKEMON_ERROR
+          type: LOAD_SINGLE_POKEMON_ERROR,
+          payload: error
         })
       });
     } else {
@@ -152,6 +151,7 @@ const PokedexState = (props) => {
         pokemons: state.pokemons,
         hasPrevious: state.previousUrl !== null,
         hasNext: state.nextUrl !== null,
+        currentPokemon: state.currentPokemon,
         fetchNext: fetchNext,
         fetchPrevious: fetchPrevious,
         fetchPokemonDetails: fetchPokemonDetails,

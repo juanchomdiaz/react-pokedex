@@ -20,6 +20,7 @@ export default (state, action) => {
         ...state,
         isReady: false,
         currentUrl: action.payload,
+        currentPokemon: null
       };
     case LOAD_POKEMONS_READY:
       return {
@@ -47,7 +48,6 @@ export default (state, action) => {
         ...state,
         pokemons: action.payload,
         isReady: true,
-        showingPokemonDetails: false,
         withError: false,
       };
     case LOAD_POKEMONS_DETAILS_ERROR:
@@ -61,13 +61,11 @@ export default (state, action) => {
       return {
         ...state,
         showingPokemonDetails: true,
-        isReady: false,
       };
     case LOAD_POKEMON_DETAILS_READY:
       return {
         ...state,
         currentPokemon: action.payload,
-        isReady: true,
         withError: false,
         nextUrl: state.currentUrl,
       };
@@ -80,20 +78,18 @@ export default (state, action) => {
     case LOAD_SINGLE_POKEMON_START:
       return {
         ...state,
-        withError: false,
-        isReady: false,
+        withError: false
       };
     case LOAD_SINGLE_POKEMON_READY:
       return {
         ...state,
-        withError: false,
-        isReady: true,
+        withError: false
       };
     case LOAD_SINGLE_POKEMON_ERROR:
       return {
         ...state,
         withError: true,
-        isReady: false,
+        error: action.payload
       };
     default:
       return state;

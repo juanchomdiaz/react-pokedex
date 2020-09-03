@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
 import PokemonList from "../PokemonList";
 import PokemonListPager from "../PokemonListPager";
