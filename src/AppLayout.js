@@ -1,15 +1,25 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Header from "./components/Header";
-import { Container } from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
+import PokedexContext from "./context/pokedex/PokedexContext";
+import { useTranslation } from "react-i18next";
 
 const AppLayout = ({ children }) => {
+  const pokedexContext = useContext(PokedexContext);
+  const { withError } = pokedexContext;
+  const { t } = useTranslation();
+
   return (
     <Fragment>
       <Header />
-      
-      <Container fluid className="mt-5">
-        {children}
-      </Container>
+
+      {withError ? (
+        <Alert variant="danger">{t("generic_error")}</Alert>
+      ) : (
+        <Container fluid className="mt-5">
+          {children}
+        </Container>
+      )}
     </Fragment>
   );
 };

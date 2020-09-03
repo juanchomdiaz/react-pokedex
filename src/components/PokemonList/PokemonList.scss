@@ -4,6 +4,11 @@
   column-gap: 25px;  
   justify-content: center;
   -webkit-justify-content: center;
+
+  a {
+    text-decoration: none;
+    color: #292929;
+  }
 }
 
 @media (max-width: 480px) {

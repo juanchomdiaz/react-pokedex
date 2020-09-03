@@ -13,7 +13,9 @@ import {
   LOAD_POKEMON_DETAILS_START,
   LOAD_POKEMON_DETAILS_READY,
   LOAD_POKEMON_DETAILS_ERROR,
-  GO_BACK_BUTTON_PRESSED
+  LOAD_SINGLE_POKEMON_START,
+  LOAD_SINGLE_POKEMON_READY,
+  LOAD_SINGLE_POKEMON_ERROR,
 } from "../../types";
 
 const PokedexState = (props) => {
@@ -23,12 +25,11 @@ const PokedexState = (props) => {
     isReady: false,
     showingPokemonDetails: false,
     showingPokedex: true,
-    preventReload: false,
     count: 0,
-    next: "/pokemon?limit=5",
-    previous: null,
+    nextUrl: "/pokemon?limit=5",
+    previousUrl: null,
+    currentUrl: "/pokemon?limit=5",
     pokemons: [],
-    limit: 5,
     currentPokemon: {},
   };
 
@@ -36,25 +37,31 @@ const PokedexState = (props) => {
 
   //functions
   const fetchNext = () => {
-    if (!state.preventReload) fetchPokemons(state.next);
-    state.preventReload = !state.preventReload;
+    fetchPokemons(state.nextUrl);
   };
 
   const fetchPrevious = () => {
-    fetchPokemons(state.previous);
+    fetchPokemons(state.previousUrl);
   };
 
   const fetchPokemons = (url) => {
     dispatch({
       type: LOAD_POKEMONS_START,
+      payload: url,
     });
 
     pokeapi
       .get(url)
       .then((res) => {
+        const payload = {
+          count: res.data.count,
+          nextUrl: res.data.next,
+          previousUrl: res.data.previous,
+        };
+
         dispatch({
           type: LOAD_POKEMONS_READY,
-          payload: res.data,
+          payload: payload,
         });
 
         dispatch({
@@ -62,9 +69,7 @@ const PokedexState = (props) => {
         });
 
         return Promise.all(
-          res.data.results.map((result) => {
-            return pokeapi.get(result.url);
-          })
+          res.data.results.map((result) => pokeapi.get(result.url))
         )
           .then((res) => {
             const pokemons = res.map((resp) => resp.data);
@@ -82,9 +87,29 @@ const PokedexState = (props) => {
           });
       })
       .catch((error) => {
-        console.log(error)
         dispatch({
           type: LOAD_POKEMONS_ERROR,
+          payload: error,
+        });
+      });
+  };
+
+  const loadPokemonAbilities = (pokemon) => {
+    return Promise.all(
+      pokemon.abilities.map((ab) => pokeapi.get(ab.ability.url))
+    )
+      .then((res) => {
+        const abilities = res.map((resp) => resp.data);
+        pokemon.expanded_abilities = abilities;
+
+        dispatch({
+          type: LOAD_POKEMON_DETAILS_READY,
+          payload: pokemon,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: LOAD_POKEMON_DETAILS_ERROR,
           payload: error,
         });
       });
@@ -95,21 +120,29 @@ const PokedexState = (props) => {
       type: LOAD_POKEMON_DETAILS_START,
     });
 
-    const pokemon = state.pokemons.filter((pok) => pok.name === name);
+    const [pokemon] = state.pokemons.filter((pok) => pok.name === name);
 
-    dispatch({
-      type: LOAD_POKEMON_DETAILS_READY,
-      payload: pokemon,
-    });
+    if (!pokemon) {
+      dispatch({
+        type: LOAD_SINGLE_POKEMON_START
+      });
+
+      pokeapi.get(`/pokemon/${name}`).then((res) => {
+        dispatch({
+          type: LOAD_SINGLE_POKEMON_READY
+        });
+
+        let pokemon = res.data;
+        loadPokemonAbilities(pokemon);
+      }).catch((error) => {
+        dispatch({
+          type: LOAD_SINGLE_POKEMON_ERROR
+        })
+      });
+    } else {
+      loadPokemonAbilities(pokemon);
+    }
   };
-
-  const goBackToPokedex = (history) => {
-    dispatch({
-      type: GO_BACK_BUTTON_PRESSED,
-    });
-
-    history.goBack();
-  }
 
   return (
     <PokedexContext.Provider
@@ -117,12 +150,11 @@ const PokedexState = (props) => {
         withError: state.withError,
         isReady: state.isReady,
         pokemons: state.pokemons,
-        hasPrevious: state.previous !== null,
-        hasNext: state.next !== null,
+        hasPrevious: state.previousUrl !== null,
+        hasNext: state.nextUrl !== null,
         fetchNext: fetchNext,
         fetchPrevious: fetchPrevious,
         fetchPokemonDetails: fetchPokemonDetails,
-        goBackToPokedex: goBackToPokedex
       }}
     >
       {props.children}

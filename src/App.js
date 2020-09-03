@@ -16,10 +16,11 @@ const App = () => {
       <Router>
         <AppLayout>
           <Suspense fallback="loading">
-            <Redirect from="/" to="/pokedex" />
             <Switch>
               <Route exact path="/pokedex" component={PokedexMain} />
               <Route exact path="/pokedex/:name" component={PokemonDetails} />
+              <Redirect from="/" to="/pokedex" />
+              <Route from="*" to="/pokedex"/>
             </Switch>
           </Suspense>
         </AppLayout>

@@ -35,7 +35,7 @@ const PokemonCard = ({ pokemon }) => {
             <Skeleton />
           ) : (
             <Fade in={isLoaded}>
-              <div>{pokemon.name}</div>
+              <div><p>#{pokemon.id}</p><p class="text-capitalize">{pokemon.name}</p></div>
             </Fade>
           )}
         </div>

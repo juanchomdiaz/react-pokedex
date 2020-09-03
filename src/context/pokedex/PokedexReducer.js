@@ -8,7 +8,9 @@ import {
   LOAD_POKEMON_DETAILS_START,
   LOAD_POKEMON_DETAILS_READY,
   LOAD_POKEMON_DETAILS_ERROR,
-  GO_BACK_BUTTON_PRESSED
+  LOAD_SINGLE_POKEMON_START,
+  LOAD_SINGLE_POKEMON_READY,
+  LOAD_SINGLE_POKEMON_ERROR,
 } from "../../types";
 
 export default (state, action) => {
@@ -16,15 +18,15 @@ export default (state, action) => {
     case LOAD_POKEMONS_START:
       return {
         ...state,
-        isFetchingData: true,
         isReady: false,
+        currentUrl: action.payload,
       };
     case LOAD_POKEMONS_READY:
       return {
         ...state,
         count: action.payload.count,
-        next: action.payload.next,
-        previous: action.payload.previous,
+        nextUrl: action.payload.nextUrl,
+        previousUrl: action.payload.previousUrl,
         isReady: true,
         withError: false,
       };
@@ -67,6 +69,7 @@ export default (state, action) => {
         currentPokemon: action.payload,
         isReady: true,
         withError: false,
+        nextUrl: state.currentUrl,
       };
     case LOAD_POKEMON_DETAILS_ERROR:
       return {
@@ -74,11 +77,24 @@ export default (state, action) => {
         error: action.payload,
         withError: true,
       };
-    case GO_BACK_BUTTON_PRESSED:
-        return {
-            ...state,
-            preventReload: true
-        }
+    case LOAD_SINGLE_POKEMON_START:
+      return {
+        ...state,
+        withError: false,
+        isReady: false,
+      };
+    case LOAD_SINGLE_POKEMON_READY:
+      return {
+        ...state,
+        withError: false,
+        isReady: true,
+      };
+    case LOAD_SINGLE_POKEMON_ERROR:
+      return {
+        ...state,
+        withError: true,
+        isReady: false,
+      };
     default:
       return state;
   }
