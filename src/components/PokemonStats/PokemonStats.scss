@@ -1,0 +1,12 @@
+.stat-item {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+    .stat-item {
+        strong {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}

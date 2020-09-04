@@ -3,6 +3,7 @@ import PokedexContext from "../../context/pokedex/PokedexContext";
 import { Button, Row, Col } from "react-bootstrap";
 import { scrollToTop } from "../../utils/helpers";
 import { useTranslation } from "react-i18next";
+import "./PokemonListPager.scss";
 
 const PokemonListPager = () => {
   const { t } = useTranslation();

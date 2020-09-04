@@ -31,7 +31,7 @@ const PokemonDetails = ({ history, match }) => {
     <Fragment>
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
-          <StyledCard className="shadow p-3 mb-5 bg-white rounded">
+          <StyledCard className="shadow mb-5 bg-white rounded">
             <Card.Title className="text-capitalize text-center mb-4">
               {currentPokemon ? currentPokemon.name : <Skeleton />}
             </Card.Title>
@@ -58,7 +58,7 @@ const PokemonDetails = ({ history, match }) => {
         </Col>
       </Row>
       <Row className="mb-4">
-        <Col xs={{ span: 4, offset: 4 }} className="text-center">
+        <Col xs={{ span: 6, offset: 3 }} md={{ span: 4, offset: 4 }} className="text-center">
           <Button onClick={() => history.goBack()}>{t("go_back")}</Button>
         </Col>
       </Row>
