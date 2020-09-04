@@ -9,7 +9,7 @@ const LanguageSelector = () => {
 
   return (
     <Nav>
-      <NavDropdown title={t(i18n.language)} id="basic-nav-dropdown" alignRight>
+      <NavDropdown title={t(i18n.language)} id="language-selector" alignRight>
         {i18n.languages.map((language) => (
           <NavDropdown.Item
             key={language}

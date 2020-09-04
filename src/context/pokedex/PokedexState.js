@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import PokedexContext from "./PokedexContext";
 import PokedexReducer from "./PokedexReducer";
 import pokeapi from "../../config/axios";
+import { parseStats } from "../../utils/helpers";
 
 import {
   LOAD_POKEMONS_START,
@@ -99,6 +100,7 @@ const PokedexState = (props) => {
       .then((res) => {
         const abilities = res.map((resp) => resp.data);
         pokemon.expanded_abilities = abilities;
+        pokemon.parsedStats = parseStats(pokemon.stats);
 
         dispatch({
           type: LOAD_POKEMON_DETAILS_READY,
@@ -118,7 +120,7 @@ const PokedexState = (props) => {
       type: LOAD_POKEMON_DETAILS_START,
     });
 
-    let [pokemon] = state.pokemons.filter((pok) => pok.name === name);
+    let pokemon = state.pokemons.find((pok) => pok.name === name);
 
     if (!pokemon) {
       dispatch({
@@ -132,6 +134,7 @@ const PokedexState = (props) => {
 
         pokemon = res.data;
         loadPokemonAbilities(pokemon);
+
       }).catch((error) => {
         dispatch({
           type: LOAD_SINGLE_POKEMON_ERROR,

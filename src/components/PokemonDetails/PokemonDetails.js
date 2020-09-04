@@ -2,15 +2,12 @@ import React, { Fragment, useContext, useEffect } from "react";
 import PokedexContext from "../../context/pokedex/PokedexContext";
 import { useTranslation } from "react-i18next";
 import Skeleton from "react-loading-skeleton";
+import { loadAbilitiesTranslations } from "../../utils/helpers";
+import PokemonStats from "../PokemonStats/PokemonStats";
+import PokemonAbilities from "../PokemonAbilities/PokemonAbilities";
+import { StyledCard } from "./PokemonDetails.styled";
 import { Button, Row, Card, Col } from "react-bootstrap";
-import styled from "styled-components";
-
-//Using styled component, just for the sake to show another way to style 
-const StyledCard = styled(Card)`
-  .card-img-top {
-    max-height: 250px;
-  }
-`; 
+import PokemonImage from "../PokemonImage/PokemonImage";
 
 const PokemonDetails = ({ history, match }) => {
   const pokedexContext = useContext(PokedexContext);
@@ -22,27 +19,46 @@ const PokemonDetails = ({ history, match }) => {
   }, []);
 
   useEffect(() => {
-    console.log("lng changed");
-  }, [i18n.language]);
+    if (!currentPokemon) return;
+
+    loadAbilitiesTranslations(currentPokemon.expanded_abilities, i18n);
+    //Force onChangeLanguage fire
+    i18n.changeLanguage(i18n.language);
+  }, [currentPokemon]);
+
 
   return (
     <Fragment>
       <Row>
-        <Col>
-          <StyledCard>
-            {currentPokemon ? <Card.Img variant="top" src={currentPokemon.sprites.other.dream_world.front_default} /> : <Skeleton circle={true} height={200} width={200}/>}
+        <Col md={{ span: 8, offset: 2 }}>
+          <StyledCard className="shadow p-3 mb-5 bg-white rounded">
+            <Card.Title className="text-capitalize text-center mb-4">
+              {currentPokemon ? currentPokemon.name : <Skeleton />}
+            </Card.Title>
+            {currentPokemon ? (
+              <PokemonImage pokemon={currentPokemon} />
+            ) : (
+              <div className="text-center">
+                <Skeleton circle={true} height={200} width={200} />
+              </div>
+            )}
             <Card.Body>
-              <Card.Title>{match.params.name}</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
+              {currentPokemon  ? (
+                <PokemonStats pokemon={currentPokemon} />
+              ) : (
+                <Skeleton />
+              )}
+              {currentPokemon  ? (
+                <PokemonAbilities pokemon={currentPokemon} />
+              ) : (
+                <Skeleton count={7} />
+              )}
             </Card.Body>
           </StyledCard>
         </Col>
       </Row>
-      <Row className="mt-4">
-        <Col xs={{ span: 2, offset: 5 }}>
+      <Row className="mb-4">
+        <Col xs={{ span: 4, offset: 4 }} className="text-center">
           <Button onClick={() => history.goBack()}>{t("go_back")}</Button>
         </Col>
       </Row>
