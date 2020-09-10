@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.scss';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// eslint-disable-next-line no-unused-vars
 import i18n from './i18n';
 
 ReactDOM.render(

@@ -16,6 +16,7 @@ const PokemonDetails = ({ history, match }) => {
 
   useEffect(() => {
     fetchPokemonDetails(match.params.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const PokemonDetails = ({ history, match }) => {
     loadAbilitiesTranslations(currentPokemon.expanded_abilities, i18n);
     //Force onChangeLanguage fire
     i18n.changeLanguage(i18n.language);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPokemon]);
 
 
