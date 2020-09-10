@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge, Jumbotron } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import PropTypes from 'prop-types';
 
 const PokemonAbilities = ({ pokemon }) => {
   const { t } = useTranslation();
@@ -24,6 +25,10 @@ const PokemonAbilities = ({ pokemon }) => {
         </Jumbotron>
       
   );
+};
+
+PokemonAbilities.propTypes = {
+  pokemon: PropTypes.object.isRequired
 };
 
 export default PokemonAbilities;

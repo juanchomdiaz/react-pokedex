@@ -8,6 +8,7 @@ import PokemonAbilities from "../PokemonAbilities/PokemonAbilities";
 import { StyledCard } from "./PokemonDetails.styled";
 import { Button, Row, Card, Col } from "react-bootstrap";
 import PokemonImage from "../PokemonImage/PokemonImage";
+import PropTypes from 'prop-types';
 
 const PokemonDetails = ({ history, match }) => {
   const pokedexContext = useContext(PokedexContext);
@@ -66,6 +67,11 @@ const PokemonDetails = ({ history, match }) => {
       </Row>
     </Fragment>
   );
+};
+
+PokemonDetails.propTypes = {
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default PokemonDetails;

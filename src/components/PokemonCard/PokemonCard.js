@@ -5,6 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import PokedexContext from "../../context/pokedex/PokedexContext";
 import useImage from "../../Hooks/useImage";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const PokemonCard = ({ pokemon }) => {
   const pokedexContext = useContext(PokedexContext);
@@ -42,6 +43,10 @@ const PokemonCard = ({ pokemon }) => {
       </Card>
     </Link>
   );
+};
+
+PokemonCard.propTypes = {
+  pokemon: PropTypes.object.isRequired
 };
 
 export default PokemonCard;

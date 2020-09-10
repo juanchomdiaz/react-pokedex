@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import './PokemonStats.scss';
+import PropTypes from 'prop-types';
 
 const PokemonStats = ({ pokemon }) => {
   const { t } = useTranslation();
@@ -32,6 +33,10 @@ const PokemonStats = ({ pokemon }) => {
       </Col>
     </Row>
   );
+};
+
+PokemonStats.propTypes = {
+  pokemon: PropTypes.object.isRequired
 };
 
 export default PokemonStats;

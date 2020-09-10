@@ -1,6 +1,7 @@
 import React from "react";
 import useImage from "../../Hooks/useImage";
 import { Fade, Image } from "react-bootstrap";
+import PropTypes from 'prop-types';
 
 const PokemonImage = ({ pokemon }) => {
   const imageSrc = pokemon.sprites.other.dream_world.front_default;
@@ -11,6 +12,10 @@ const PokemonImage = ({ pokemon }) => {
       <Image className="pokemon-img" src={image.src} alt={pokemon.name} />
     </Fade>
   );
+};
+
+PokemonImage.propTypes = {
+  pokemon: PropTypes.object.isRequired
 };
 
 export default PokemonImage;
