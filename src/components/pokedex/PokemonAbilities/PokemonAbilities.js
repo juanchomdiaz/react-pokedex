@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
 import { Badge, Jumbotron } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+
 import PropTypes from 'prop-types';
 
 const PokemonAbilities = ({ pokemon }) => {

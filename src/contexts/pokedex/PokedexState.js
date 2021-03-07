@@ -1,7 +1,10 @@
 import React, { useReducer } from "react";
+
 import PokedexContext from "./PokedexContext";
 import PokedexReducer from "./PokedexReducer";
+
 import pokeapi from "config/axios";
+
 import { parseStats } from "helpers/pokeapi";
 
 import {

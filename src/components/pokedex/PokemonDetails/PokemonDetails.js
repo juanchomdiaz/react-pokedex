@@ -1,13 +1,18 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import PokedexContext from "contexts/pokedex/PokedexContext";
+
 import { useTranslation } from "react-i18next";
-import Skeleton from "react-loading-skeleton";
+
+import PokedexContext from "contexts/pokedex/PokedexContext";
 import { loadAbilitiesTranslations } from "helpers/i18n";
+
 import PokemonStats from "components/pokedex/PokemonStats/PokemonStats";
 import PokemonAbilities from "components/pokedex/PokemonAbilities/PokemonAbilities";
-import { StyledCard } from "./PokemonDetails.styled";
-import { Button, Row, Card, Col } from "react-bootstrap";
 import PokemonImage from "components/pokedex/PokemonImage/PokemonImage";
+
+import { Button, Row, Card, Col } from "react-bootstrap";
+import { StyledCard } from "./PokemonDetails.styled";
+import Skeleton from "react-loading-skeleton";
+
 import PropTypes from 'prop-types';
 
 const PokemonDetails = ({ history, match }) => {

@@ -1,6 +1,9 @@
 import React from "react";
+
 import useImage from "hooks/useImage";
+
 import { Fade, Image } from "react-bootstrap";
+
 import PropTypes from 'prop-types';
 
 const PokemonImage = ({ pokemon }) => {

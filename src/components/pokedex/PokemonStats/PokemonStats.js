@@ -1,7 +1,10 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+
 import { useTranslation } from "react-i18next";
+
+import { Row, Col } from "react-bootstrap";
 import './PokemonStats.scss';
+
 import PropTypes from 'prop-types';
 
 const PokemonStats = ({ pokemon }) => {

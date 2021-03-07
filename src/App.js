@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import PokedexState from "contexts/pokedex/PokedexState";
+
 import PokedexMain from "components/pokedex/PokedexMain";
 import PokemonDetails from "components/pokedex/PokemonDetails";
 import AppLayout from "components/layout/AppLayout";
