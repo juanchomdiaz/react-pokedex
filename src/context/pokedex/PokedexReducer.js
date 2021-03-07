@@ -13,7 +13,7 @@ import {
   LOAD_SINGLE_POKEMON_ERROR,
 } from "../../types";
 
-export default (state, action) => {
+const PokedexReducer = (state, action) => {
   switch (action.type) {
     case LOAD_POKEMONS_START:
       return {
@@ -95,3 +95,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default PokedexReducer;
