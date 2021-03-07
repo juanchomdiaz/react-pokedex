@@ -12,7 +12,7 @@ function unbindEvents(image) {
   }
 }
 
-export default (url, crossOrigin) => {
+const imageLoader = (url, crossOrigin) => {
   const image = new Image();
 
   // Support cross origin requests
@@ -38,3 +38,5 @@ export default (url, crossOrigin) => {
 
   });
 };
+
+export default imageLoader;
