@@ -17,7 +17,7 @@ import {
   LOAD_SINGLE_POKEMON_START,
   LOAD_SINGLE_POKEMON_READY,
   LOAD_SINGLE_POKEMON_ERROR,
-} from "../../types";
+} from "./PokedexTypes";
 
 const PokedexState = (props) => {
   const initialState = {
