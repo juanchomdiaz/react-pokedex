@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, Fragment } from "react";
-import PokedexContext from "../../../context/pokedex/PokedexContext";
-import PokemonCard from "../PokemonCard/PokemonCard";
+import PokedexContext from "contexts/pokedex/PokedexContext";
+import PokemonCard from "components/pokedex/PokemonCard/PokemonCard";
 import "./PokemonList.scss";
 import { Spinner } from "react-bootstrap";
 

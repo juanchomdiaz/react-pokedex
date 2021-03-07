@@ -32,10 +32,8 @@ const imageLoader = (url, crossOrigin) => {
     image.onload = loaded;
     image.onerror = errored;
     image.onabort = errored;
-    
+
     image.src = url;
-
-
   });
 };
 

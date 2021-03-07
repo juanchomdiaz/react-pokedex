@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import imageLoader from '../utils/imageLoader';
+import imageLoader from 'helpers/imageLoader';
 
 const useImage = ({src}) => {
     const [loaded, setLoaded] = useState(false);

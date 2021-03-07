@@ -1,7 +1,8 @@
 import React, { useContext, Fragment } from "react";
-import PokedexContext from "../../../context/pokedex/PokedexContext";
+import PokedexContext from "contexts/pokedex/PokedexContext";
 import { Button, Row, Col } from "react-bootstrap";
-import { scrollToTop } from "../../../utils/helpers";
+import { scrollToTop } from "helpers/ui";
+
 import { useTranslation } from "react-i18next";
 import "./PokemonListPager.scss";
 

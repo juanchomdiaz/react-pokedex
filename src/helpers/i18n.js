@@ -1,7 +1,3 @@
-export function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
 //Parse abilities' translations from POKEAPI and load them as i18next resources.
 export function loadAbilitiesTranslations(abilities, i18n) {
   abilities.forEach((ability) => {
@@ -21,12 +17,3 @@ export function loadAbilitiesTranslations(abilities, i18n) {
     });
   });
 }
-
-export function parseStats(stats) {
-  let statsObj = {};
-
-  stats.map((stat) => (statsObj[stat.stat.name] = stat.base_stat));
-
-  return statsObj;
-};
-
