@@ -40,7 +40,7 @@ const PokemonDetails = ({ history, match }) => {
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
           <StyledCard className="shadow mb-5 bg-white rounded">
-            <Card.Title className="text-capitalize text-center mb-4">
+            <Card.Title className="text-capitalize text-center mb-5">
               {currentPokemon ? currentPokemon.name : <Skeleton />}
             </Card.Title>
             {currentPokemon ? (

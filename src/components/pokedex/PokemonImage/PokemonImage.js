@@ -3,6 +3,7 @@ import React from "react";
 import useImage from "hooks/useImage";
 
 import { Fade, Image } from "react-bootstrap";
+import './PokemonImage.scss';
 
 import PropTypes from 'prop-types';
 
