@@ -1,5 +1,5 @@
 import React from "react";
-import useImage from "../../Hooks/useImage";
+import useImage from "../../../Hooks/useImage";
 import { Fade, Image } from "react-bootstrap";
 import PropTypes from 'prop-types';
 

@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Card, Fade, Image } from "react-bootstrap";
 import "./PokemonCard.scss";
 import Skeleton from "react-loading-skeleton";
-import PokedexContext from "../../context/pokedex/PokedexContext";
-import useImage from "../../Hooks/useImage";
+import PokedexContext from "../../../context/pokedex/PokedexContext";
+import useImage from "../../../Hooks/useImage";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 

@@ -8,7 +8,7 @@ import {
 import PokedexState from "./context/pokedex/PokedexState";
 import PokedexMain from "./components/PokedexMain";
 import PokemonDetails from "./components/PokemonDetails";
-import AppLayout from "./AppLayout";
+import AppLayout from "./components/layout/AppLayout";
 
 const App = () => {
   return (

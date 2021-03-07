@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
-import Header from "./components/Header";
+import Header from "./Header";
 import { Container, Alert } from "react-bootstrap";
-import PokedexContext from "./context/pokedex/PokedexContext";
+import PokedexContext from "../../context/pokedex/PokedexContext";
 import { useTranslation } from "react-i18next";
 
 const AppLayout = ({ children }) => {

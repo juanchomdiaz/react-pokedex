@@ -1,7 +1,7 @@
 import React from 'react';
 import PokemonCard  from './PokemonCard';
 import { Container } from 'react-bootstrap';
-import PokedexContext from "../../context/pokedex/PokedexContext";
+import PokedexContext from "../../../context/pokedex/PokedexContext";
 import { BrowserRouter as Router} from 'react-router-dom';
 
 // This default export determines where you story goes in the story list

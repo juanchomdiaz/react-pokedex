@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import LanguageSelector from "../LanguageSelector/LanguageSelector";
+import LanguageSelector from "../../common/ui/LanguageSelector/LanguageSelector";
 
 const Header = () => {
   return (

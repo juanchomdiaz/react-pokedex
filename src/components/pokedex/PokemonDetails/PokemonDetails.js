@@ -1,8 +1,8 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import PokedexContext from "../../context/pokedex/PokedexContext";
+import PokedexContext from "../../../context/pokedex/PokedexContext";
 import { useTranslation } from "react-i18next";
 import Skeleton from "react-loading-skeleton";
-import { loadAbilitiesTranslations } from "../../utils/helpers";
+import { loadAbilitiesTranslations } from "../../../utils/helpers";
 import PokemonStats from "../PokemonStats/PokemonStats";
 import PokemonAbilities from "../PokemonAbilities/PokemonAbilities";
 import { StyledCard } from "./PokemonDetails.styled";
