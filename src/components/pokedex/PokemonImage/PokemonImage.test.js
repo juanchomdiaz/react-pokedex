@@ -7,7 +7,7 @@ configure({ adapter: new Adapter() });
 
 
 describe("PokemonImage", () => {
-    it(">>> Should render the the image", () => {
+    it(">>> Should render the image", () => {
         let fakePokemon = {
           name: "bulbasaur",
           sprites: {

@@ -5,10 +5,9 @@ function unbindEvents(image) {
   image.onabort = null;
 
   try {
-    // Force garbage collect in old browsers
-    delete image.src;
+    //delete image.src;
   } catch (e) {
-    // Safari's strict mode throws, ignore
+    // Strict mode in safari error
   }
 }
 
@@ -21,7 +20,8 @@ const imageLoader = (url, crossOrigin) => {
   return new Promise((resolve, reject) => {
     const loaded = (event) => {
       unbindEvents(image);
-      resolve(event.target || event.srcElement);
+      console.log(image);
+      resolve(image);
     };
 
     const errored = (error) => {
@@ -32,7 +32,7 @@ const imageLoader = (url, crossOrigin) => {
     image.onload = loaded;
     image.onerror = errored;
     image.onabort = errored;
-
+    
     image.src = url;
   });
 };
