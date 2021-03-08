@@ -1,6 +1,6 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
-import PokedexContext from "../../context/pokedex/PokedexContext";
+import PokedexContext from "contexts/pokedex/PokedexContext";
 import { mount } from "enzyme";
 import { BrowserRouter as Router } from "react-router-dom";
 
