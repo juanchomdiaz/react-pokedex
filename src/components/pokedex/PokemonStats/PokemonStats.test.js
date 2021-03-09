@@ -10,7 +10,7 @@ describe("PokemonAbilities", () => {
     it(">>> Should render the stats", () => {
         let fakePokemon = {
           name: "bulbasaur",
-          parsedStats: {"hp":45,"attack":49,"defense":49,"special-attack":65,"special-defense":65,"speed":45}
+          parsedStats: [{name: "hp", value: 45}, {name: "attack", value: 49},{name: "defense", value: 49},{name: "speed", value: 45}]
         };
       
         const wrapper = shallow(<PokemonStats pokemon={fakePokemon} />);
