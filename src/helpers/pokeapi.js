@@ -1,7 +1,12 @@
-export function parseStats(stats) {
-  let statsObj = {};
+const REQUIRED_STATS = ["hp", "attack", "defense", "speed"];
 
-  stats.map((stat) => (statsObj[stat.stat.name] = stat.base_stat));
+export function parseStats(stats = []) {
+  let filtered = stats
+    .filter((statItem) => REQUIRED_STATS.includes(statItem.stat.name))
+    .map((filteredStat) => ({
+      name: filteredStat.stat.name,
+      value: filteredStat.base_stat,
+    }));
 
-  return statsObj;
+  return filtered;
 }

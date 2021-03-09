@@ -20,7 +20,6 @@ const imageLoader = (url, crossOrigin) => {
   return new Promise((resolve, reject) => {
     const loaded = (event) => {
       unbindEvents(image);
-      console.log(image);
       resolve(image);
     };
 
