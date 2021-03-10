@@ -96,7 +96,7 @@ const translations = {
       special_attack: "Attacco Speciale",
       special_defense: "Difesa Speciale",
       speed: "Velocità",
-      generic_error: "Spiacenti! Si è verificato un errore. Per favor, ricarica la pagina."
+      generic_error: "Spiacenti! Si è verificato un errore. Per favore, ricarica la pagina."
     },
   },
 };
