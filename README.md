@@ -15,5 +15,9 @@ Live at netlify: https://sharp-kilby-601b76.netlify.app
 
 - npm run test
 
+### Want to something better?
+
+Take a look at the SSR version of this app in [this repo](https://github.com/juanchomdiaz/ssr-react-pokedex)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
