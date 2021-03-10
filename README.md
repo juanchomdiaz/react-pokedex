@@ -15,7 +15,7 @@ Live at netlify: https://zealous-fermat-960b45.netlify.app/pokedex
 
 - npm run test
 
-### Want to see something better?
+### Want to see something else?
 
 Take a look at the *SSR VERSION* of this app in [this repo](https://github.com/juanchomdiaz/ssr-react-pokedex)
 
