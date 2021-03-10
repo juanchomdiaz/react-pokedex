@@ -2,3 +2,4 @@
   from = "/"
   to = "/pokedex"
   status = 301
+  force = true
