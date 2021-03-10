@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 
 import PokedexState from "contexts/pokedex/PokedexState";
@@ -20,6 +21,7 @@ const App = () => {
             <Switch>
               <Route exact path="/pokedex" component={PokedexMain} />
               <Route exact path="/pokedex/:name" component={PokemonDetails} />
+              <Redirect from="/" to="/pokedex" />
             </Switch>
         </AppLayout>
       </Router>
