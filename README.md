@@ -3,7 +3,7 @@
 
 A multilanguage Pokedex made with ReactJs 17, using hooks, Context API, i18next, react-bootstrap, skeleton loading, jest + enzyme and storybook.
 
-Live at netlify: https://sharp-kilby-601b76.netlify.app
+Live at netlify: https://zealous-fermat-960b45.netlify.app/pokedex
 
 ### How to run?
 
@@ -17,7 +17,7 @@ Live at netlify: https://sharp-kilby-601b76.netlify.app
 
 ### Want to something better?
 
-Take a look at the SSR version of this app in [this repo](https://github.com/juanchomdiaz/ssr-react-pokedex)
+Take a look at the *SSR VERSION* of this app in [this repo](https://github.com/juanchomdiaz/ssr-react-pokedex)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
