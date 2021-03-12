@@ -1,5 +1,5 @@
 
-## POKEDEX REACT (FACTORIAL REFRESH)
+## POKEDEX REACT
 
 A multilanguage Pokedex made with ReactJs 17, using hooks, Context API, i18next, react-bootstrap, skeleton loading, jest + enzyme and storybook.
 
